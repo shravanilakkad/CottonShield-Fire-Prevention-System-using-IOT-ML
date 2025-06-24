@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fire Hazard Detection Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, white,grey);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            margin: 10px;
+            border-radius: 12px;
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .result-box h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .safe {
+            color: #2ecc71;
+        }
+
+        .danger {
+            color: #e74c3c;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: #ffffff;
+            color: #f12711;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #fceabb;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 CottonShield : Fire Prevention System 🔥</h1>
+
+        <div class="cards">
+            <div class="card">
+                <h2>🌡️ Temperature</h2>
+                <p>{{ data['Temperature'] }} °C</p>
+            </div>
+            <div class="card">
+                <h2>💧 Humidity</h2>
+                <p>{{ data['Humidity'] }} %</p>
+            </div>
+            <div class="card">
+                <h2>🧪 Gas Value</h2>
+                <p>{{ data['Gas_Value'] }}</p>
+            </div>
+        </div>
+
+        <div class="result-box">
+            <h2>🚨 Status: 
+                <span class="{{ 'danger' if result == 'FIRE HAZARD DETECTED' else 'safe' }}">
+                    {{ result }}
+                </span>
+            </h2>
+            
+
+            <a href="/" class="btn">Refresh Prediction</a>
+        </div>
+    </div>
+</body>
+</html>
